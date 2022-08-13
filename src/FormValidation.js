@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Form,Button,Row,Col } from 'react-bootstrap'
+import { Form,Button,Row,Col, InputGroup } from 'react-bootstrap'
+import Spinner from 'react-bootstrap/Spinner';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -12,7 +13,8 @@ const schema = yup.object({
     email : yup.string().required('Email is required').email('Email must be valid'),
     mobileNumber : yup.number().required('MobileNumber is required').positive('mobile number must be positive number').integer('mobile number must be integer number'),
     password : yup.string().required('Password is required').matches().min(8,'Password must be 8').max(15,'Password must be less than or equal 15'),
-    confirmPassword:yup.string().oneOf([yup.ref('password'),null],'Password must be matched').required('confirmPassword is required')
+    confirmPassword:yup.string().oneOf([yup.ref('password'),null],'Password must be matched').required('confirmPassword is required'),
+    
 })
 
 export default function FormValidation() {
@@ -37,7 +39,7 @@ export default function FormValidation() {
     const onSubmit = data => {
         setTimeout(() => {
             setSubmitted(true)
-        },1000)
+        },5000)
         setLoading(true)
     };
 
@@ -191,19 +193,6 @@ export default function FormValidation() {
                     </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3" controlId="formBasicCheckbox">
-                     <Col sm={3}>
-                       
-                    </Col>
-
-                    <Col sm={9}>
-                       <Form.Check 
-                            type="checkbox" 
-                            label="Check me out" 
-                       />
-                    </Col>
-                </Form.Group>
-
                 <Form.Group as={Row} className="mb-3" controlId="formBasicButton">
                      <Col sm={3}>
                        
@@ -212,9 +201,16 @@ export default function FormValidation() {
                     <Col sm={9}>
                         <div className="d-grid gap-2">
                             {
-                                loading ? <Button variant="dark" type="submit" disabled>
-                                              Loading ....
-                                          </Button>
+                                loading ?  <Button variant="success" disabled>
+                                                <Spinner
+                                                as="span"
+                                                animation="grow"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                                />
+                                                Submitting....
+                                           </Button>
                                           :
                                           <Button variant="dark" type="submit">
                                               Submit
