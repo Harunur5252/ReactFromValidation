@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+body{
+  background-color: rgb(180, 197, 197) !important;
+}
+.text{
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'lobster';
+  margin-top: 2rem;
+}
+.form-size{
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+.form-title{
+  font-family: 'Roboto+Condensed';
+  font-size: 1.1rem !important;
+}
+.error-text{
+  font-size: 20px;
+  font-family: 'Roboto+Condensed';
+}
+.form-submit{
+  font-family: 'Roboto+Condensed';
+  color: green;
+  font-size: 2rem !important;
+  text-align: center;
+}
