@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Form,Button,Row,Col, InputGroup } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form,Button,Row,Col } from 'react-bootstrap'
 import Spinner from 'react-bootstrap/Spinner';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,21 +18,9 @@ const schema = yup.object({
 })
 
 export default function FormValidation() {
-    const { register,reset, handleSubmit,setValue, watch, formState: { errors,isSubmitSuccessful,isSubmitting } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
       });
-    //   useEffect(() => {
-    //     reset({
-    //         fullName: '',
-    //         userName: '',
-    //         slug: '',
-    //         url: '',
-    //         email: '',
-    //         mobileNumber: '',
-    //         password: '',
-    //         confirmPassword: '',
-    //     })
-    //   }, [isSubmitSuccessful])
 
     const [submitted,setSubmitted] = useState(false)
     const [loading,setLoading] = useState(false)
